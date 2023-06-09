@@ -1,0 +1,166 @@
+==================
+Arithmetic
+==================
+
+numbers {
+  a = 3 + -3
+  a = 3 - 3
+  a = 3 * 3
+  a = 3 / 3
+  a = 3 % 3
+  a = 3 ^ 3
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+          (literal_value
+            (numeric_lit))
+          (operation
+            (unary_operation
+              (literal_value
+              (numeric_lit)))))))
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit)))))
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit)))))
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit)))))
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit)))))
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit)))))
+      
+      )))
+
+
+
+==================
+Comparison
+==================
+
+comparison {
+  a = 3 > -3
+  a = 3 != -3
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+            (literal_value
+              (numeric_lit))
+            (operation
+              (unary_operation
+                (literal_value
+                (numeric_lit)))))))
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+            (literal_value
+              (numeric_lit))
+            (operation
+              (unary_operation
+                (literal_value
+                (numeric_lit)))))))
+      )))
+
+
+==================
+Logic
+==================
+
+logic {
+  a = 3 > -3 || 3 != -3
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (operation
+          (binary_operation
+            (operation
+            (binary_operation
+              (literal_value
+                (numeric_lit))
+  (operation
+                (unary_operation
+                  (literal_value
+                  (numeric_lit))))))
+            (operation
+            (binary_operation
+              (literal_value
+                (numeric_lit))
+  (operation
+                (unary_operation
+                  (literal_value
+                  (numeric_lit))))))))))))
+
+==================
+Access
+==================
+
+access {
+  a = b["foo"]
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (access
+          (identifier)
+          (literal_value (string_lit)))))))

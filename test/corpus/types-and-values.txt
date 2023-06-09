@@ -1,0 +1,223 @@
+==================
+Numbers
+==================
+
+numbers {
+  a = 3
+  b = 5.00
+  c = 1e+2
+  d = 1e-2
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (literal_value
+          (numeric_lit)))
+      (attribute
+        (attribute_key)
+        (literal_value
+          (numeric_lit)))
+      (attribute
+        (attribute_key)
+        (literal_value
+          (numeric_lit)))
+      (attribute
+        (attribute_key)
+        (literal_value
+          (numeric_lit))))))
+
+
+==================
+Strings
+==================
+
+strings {
+  a = "Hello, world!" 
+  e = "Foo\n\"bar"
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (literal_value
+          (string_lit)))
+      (attribute
+        (attribute_key)
+        (literal_value
+          (string_lit
+            (escape_sequence)
+            (escape_sequence)
+            ))))))
+
+
+
+==================
+Bools
+==================
+
+bools {
+  yes = true
+  no = false
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (literal_value
+          (bool_lit)))
+      (attribute
+        (attribute_key)
+        (literal_value
+          (bool_lit))))))
+
+
+==================
+Arrays
+==================
+
+bools {
+  e = []
+  a = [0]
+  b = [0,1,2,3]
+  c = [0,1,2,3,]
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (array))
+      (attribute
+        (attribute_key)
+        (array
+          (literal_value
+            (numeric_lit))))
+      (attribute
+        (attribute_key)
+        (array
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit))))
+      (attribute
+        (attribute_key)
+        (array
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit))
+          (literal_value
+            (numeric_lit)))))))
+
+==================
+Objects
+==================
+
+objects {
+  a = {}
+  b = {
+    first_name = "John",
+    last_name  = "Doe",
+  }
+  targets = [
+    { "app.kubernetes.io/name" = local.file.targets.content }, // tada!
+    { "app.kubernetes.io/name" = "localhost:9001" },
+  ]
+  c = {first_name = "John", last_name  = "Doe",}
+  # c = {first_name = "John", last_name  = "Doe" } <- currently not working
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (object))
+      (attribute
+        (attribute_key)
+        (object
+          (object_assignment
+            (identifier)
+            (literal_value (string_lit)))
+          (object_assignment
+            (identifier)
+            (literal_value (string_lit)))))
+      (attribute
+        (attribute_key)
+        (array
+          (object
+            (object_assignment
+              (string_lit)
+              (identifier)))
+          (comment)
+          (object
+            (object_assignment
+              (string_lit)
+              (literal_value (string_lit))))))
+      (attribute
+        (attribute_key)
+        (object
+          (object_assignment
+            (identifier)
+            (literal_value (string_lit)))
+          (object_assignment
+            (identifier)
+            (literal_value (string_lit)))))
+      (comment))))
+
+==================
+Functions
+==================
+
+functions {
+  value = random()
+  value = env("TOKEN_FILE_PATH")
+}
+
+---
+
+(config_file
+  (block
+    (identifier)
+    (block_body
+      (attribute
+        (attribute_key)
+        (function_call
+          (identifier)))
+      (attribute
+        (attribute_key)
+        (function_call
+          (identifier)
+          (function_params
+            (literal_value (string_lit)))
+          ))
+      )))

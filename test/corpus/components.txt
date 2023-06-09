@@ -1,0 +1,74 @@
+==================
+Empty File
+==================
+
+---
+
+(config_file)
+
+
+==================
+Empty Component
+==================
+
+prometheus.exporter.redis "LABEL" {
+}
+
+---
+
+(config_file
+ (block
+  (identifier)
+  (label (identifier))
+  (block_body)))
+
+==================
+Simple Component
+==================
+
+prometheus.exporter.redis "LABEL" {
+  redis_addr = "localhost"
+}
+
+---
+
+(config_file
+ (block
+  (identifier)
+  (label (identifier))
+  (block_body
+    (attribute
+      (attribute_key)
+      (literal_value
+        (string_lit))))))
+
+===================
+Multiple Components
+===================
+
+prometheus.exporter.redis "redis_1" {
+  redis_addr = "localhost"
+}
+prometheus.exporter.redis "redis_2" {
+  redis_addr = "otherhost"
+}
+
+---
+
+(config_file
+ (block
+  (identifier)
+  (label (identifier))
+  (block_body
+    (attribute
+      (attribute_key)
+      (literal_value
+        (string_lit)))))
+ (block
+  (identifier)
+  (label (identifier))
+  (block_body
+    (attribute
+      (attribute_key)
+      (literal_value
+        (string_lit))))))
