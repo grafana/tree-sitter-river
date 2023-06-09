@@ -1,0 +1,17 @@
+// Create a local.file component labeled my_file.
+// This can be referenced by other components as local.file.my_file.
+local.file "my_file" {
+  filename = "/tmp/my-file.txt"
+}
+
+// Pattern for creating a labeled block, which the above block follows:
+BLOCK_NAME "BLOCK_LABEL" {
+  // Block body
+  IDENTIFIER = EXPRESSION // Attribute
+}
+
+// Pattern for creating an unlabeled block:
+BLOCK_NAME {
+  // Block body
+  IDENTIFIER = env("ENV_VAR") // Attribute
+}

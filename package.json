@@ -10,5 +10,13 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "tree-sitter-cli": "^0.20.8"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.river",
+      "file-types": [
+        "river"
+      ]
+    }
+  ]
 }

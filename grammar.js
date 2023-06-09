@@ -57,7 +57,7 @@ module.exports = grammar({
     access: ($) => seq($.identifier,'[',$._expression,']'),
 
     function_call: ($) =>
-      seq($.identifier, "(", optional($.function_params), ")"),
+      seq(field('function',$.identifier), "(", optional($.function_params), ")"),
     function_params: ($) => seq($._expression, repeat(seq(",", $._expression))),
 
     numeric_lit: ($) =>
