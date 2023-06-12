@@ -3,14 +3,14 @@ module.exports = grammar({
   extras: ($) => [$.comment, $._whitespace],
   rules: {
     config_file: ($) => repeat($.block),
-    block: ($) => seq(field('name',$.identifier), field('label',optional($.label)), $.block_body),
+    block: ($) => seq(field('name',$.identifier), field('label',optional($.label)), field('body',$.block_body)),
     label: ($) => seq('"', $.identifier, '"'),
     block_body: ($) => seq("{", repeat(choice($.attribute, $.block)), "}"),
     identifier: ($) =>
       seq($._identifier_part, repeat(seq(".", $._identifier_part))),
     _identifier_part: ($) => /(\p{ID_Start}([\p{ID_Continue}_]*))/,
     attribute_key: ($) => $._identifier_part,
-    attribute: ($) => seq($.attribute_key, "=", $._expression),
+    attribute: ($) => seq(field('key',$.attribute_key), "=", field('value',$._expression)),
     _expression: ($) =>
       choice(
         $.literal_value,
