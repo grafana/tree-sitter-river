@@ -3,7 +3,7 @@ module.exports = grammar({
   extras: ($) => [$.comment, $._whitespace],
   rules: {
     config_file: ($) => repeat($.block),
-    block: ($) => seq(field('name',$.identifier), optional($.label), $.block_body),
+    block: ($) => seq(field('name',$.identifier), field('label',optional($.label)), $.block_body),
     label: ($) => seq('"', $.identifier, '"'),
     block_body: ($) => seq("{", repeat(choice($.attribute, $.block)), "}"),
     identifier: ($) =>
