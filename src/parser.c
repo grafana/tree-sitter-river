@@ -12,9 +12,9 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 38
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 6
+#define FIELD_COUNT 7
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
-#define PRODUCTION_ID_COUNT 5
+#define PRODUCTION_ID_COUNT 6
 
 enum {
   anon_sym_DQUOTE = 1,
@@ -495,7 +495,8 @@ enum {
   field_key = 3,
   field_label = 4,
   field_name = 5,
-  field_value = 6,
+  field_params = 6,
+  field_value = 7,
 };
 
 static const char * const ts_field_names[] = {
@@ -505,6 +506,7 @@ static const char * const ts_field_names[] = {
   [field_key] = "key",
   [field_label] = "label",
   [field_name] = "name",
+  [field_params] = "params",
   [field_value] = "value",
 };
 
@@ -513,6 +515,7 @@ static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [2] = {.index = 2, .length = 3},
   [3] = {.index = 5, .length = 2},
   [4] = {.index = 7, .length = 1},
+  [5] = {.index = 8, .length = 2},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -528,6 +531,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_value, 2},
   [7] =
     {field_function, 0},
+  [8] =
+    {field_function, 0},
+    {field_params, 2},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
@@ -6305,8 +6311,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [74] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_numeric_lit, 1),
   [76] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_binary_operation, 3),
   [78] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_binary_operation, 3),
-  [80] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_function_call, 4, .production_id = 4),
-  [82] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_function_call, 4, .production_id = 4),
+  [80] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_function_call, 4, .production_id = 5),
+  [82] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_function_call, 4, .production_id = 5),
   [84] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__expression, 3),
   [86] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__expression, 3),
   [88] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_object, 3),

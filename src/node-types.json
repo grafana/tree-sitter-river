@@ -267,17 +267,17 @@
             "named": true
           }
         ]
+      },
+      "params": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "function_params",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "function_params",
-          "named": true
-        }
-      ]
     }
   },
   {

@@ -3,14 +3,20 @@ module.exports = grammar({
   extras: ($) => [$.comment, $._whitespace],
   rules: {
     config_file: ($) => repeat($.block),
-    block: ($) => seq(field('name',$.identifier), field('label',optional($.label)), field('body',$.block_body)),
+    block: ($) =>
+      seq(
+        field("name", $.identifier),
+        field("label", optional($.label)),
+        field("body", $.block_body)
+      ),
     label: ($) => seq('"', $.identifier, '"'),
     block_body: ($) => seq("{", repeat(choice($.attribute, $.block)), "}"),
     identifier: ($) =>
       seq($._identifier_part, repeat(seq(".", $._identifier_part))),
     _identifier_part: ($) => /(\p{ID_Start}([\p{ID_Continue}_]*))/,
     attribute_key: ($) => $._identifier_part,
-    attribute: ($) => seq(field('key',$.attribute_key), "=", field('value',$._expression)),
+    attribute: ($) =>
+      seq(field("key", $.attribute_key), "=", field("value", $._expression)),
     _expression: ($) =>
       choice(
         $.literal_value,
@@ -54,10 +60,15 @@ module.exports = grammar({
     object_assignment: ($) =>
       seq(choice($.string_lit, $.identifier), "=", $._expression),
 
-    access: ($) => seq($.identifier,'[',$._expression,']'),
+    access: ($) => seq($.identifier, "[", $._expression, "]"),
 
     function_call: ($) =>
-      seq(field('function',$.identifier), "(", optional($.function_params), ")"),
+      seq(
+        field("function", $.identifier),
+        "(",
+        field("params", optional($.function_params)),
+        ")"
+      ),
     function_params: ($) => seq($._expression, repeat(seq(",", $._expression))),
 
     numeric_lit: ($) =>
