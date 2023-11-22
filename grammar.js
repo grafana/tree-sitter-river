@@ -11,6 +11,7 @@ module.exports = grammar({
       ),
     label: ($) => seq('"', $.identifier, '"'),
     block_body: ($) => seq("{", repeat(choice($.attribute, $.block)), "}"),
+    object_identifier: ($) => /([\p{ID_Continue}_]*)/,
     identifier: ($) =>
       seq($._identifier_part, repeat(seq(".", $._identifier_part))),
     _identifier_part: ($) => /(\p{ID_Start}([\p{ID_Continue}_]*))/,
@@ -58,7 +59,7 @@ module.exports = grammar({
     object: ($) =>
       seq("{", repeat(seq($.object_assignment, optional(","))), "}"),
     object_assignment: ($) =>
-      seq(choice($.string_lit, $.identifier), "=", $._expression),
+      seq(choice($.string_lit, $.object_identifier), "=", $._expression),
 
     access: ($) => seq($.identifier, "[", $._expression, "]"),
 

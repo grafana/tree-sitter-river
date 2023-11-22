@@ -419,6 +419,10 @@
           "named": true
         },
         {
+          "type": "object_identifier",
+          "named": true
+        },
+        {
           "type": "operation",
           "named": true
         },
@@ -604,6 +608,10 @@
   },
   {
     "type": "null_lit",
+    "named": true
+  },
+  {
+    "type": "object_identifier",
     "named": true
   },
   {

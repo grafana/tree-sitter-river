@@ -91,6 +91,10 @@
         }
       ]
     },
+    "object_identifier": {
+      "type": "PATTERN",
+      "value": "([\\p{ID_Continue}_]*)"
+    },
     "identifier": {
       "type": "SEQ",
       "members": [
@@ -563,7 +567,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "object_identifier"
             }
           ]
         },
